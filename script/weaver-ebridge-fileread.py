@@ -28,10 +28,15 @@ def poc(host):
     for i in urls:
         try:
             r = requests.post(i, data=data, timeout=5)
-            if evidence1 in r.content or evidence2 in r.content:
+            if evidence1 in r.content:
                 return i
+            elif evidence2 in r.content:
+                continue
             elif evidence3 in r.content:
                 return False
+            else:
+                print "The vulnerability exists, but the path is wrong"
+                return True
         except Exception:
             return False
 
