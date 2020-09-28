@@ -27,7 +27,7 @@ def poc(host):
             }
     for i in urls:
         try:
-            r = requests.post(i, data=data, timeout=30)
+            r = requests.post(i, data=data, timeout=5)
             if evidence1 in r.content or evidence2 in r.content:
                 return i
             elif evidence3 in r.content:
